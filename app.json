@@ -1,0 +1,33 @@
+{
+    "expo": {
+        "name": "youtube-learn",
+        "slug": "youtube-learn",
+        "version": "1.0.0",
+        "orientation": "portrait",
+        "icon": "./assets/images/icon.png",
+        "scheme": "myapp",
+        "userInterfaceStyle": "automatic",
+        "splash": {
+            "image": "./assets/images/splash.png",
+            "resizeMode": "contain",
+            "backgroundColor": "#ffffff"
+        },
+        "ios": {
+            "supportsTablet": false,
+            "bundleIdentifier": "com.brentlok.youtubelearn"
+        },
+        "android": {
+            "adaptiveIcon": {
+                "foregroundImage": "./assets/images/icon.png",
+                "backgroundColor": "#ffffff"
+            },
+            "package": "com.brentlok.youtubelearn"
+        },
+        "plugins": [
+            "expo-router"
+        ],
+        "experiments": {
+            "typedRoutes": true
+        }
+    }
+}
