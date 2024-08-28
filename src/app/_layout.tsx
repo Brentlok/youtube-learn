@@ -26,7 +26,7 @@ const RootLayout: React.FunctionComponent = () => {
     return (
         <Stack>
             <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-            <Stack.Screen name="+not-found" />
+            <Stack.Screen name="auth/index" options={{ headerShown: false, animation: 'none' }} />
         </Stack>
     )
 }

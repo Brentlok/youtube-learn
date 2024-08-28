@@ -1,6 +1,7 @@
 import React from 'react'
-import { Text } from 'react-native'
 
-const HomeScreen: React.FunctionComponent = () => <Text>Home</Text>
+const HomeScreen: React.FunctionComponent = () => {
+    return null
+}
 
 export default HomeScreen
