@@ -79,3 +79,42 @@ export const BottomBarTitle = typographyFactory({
         letterSpacing: 0.5,
     },
 })
+
+export const CategoryTitle = typographyFactory({
+    size: 18,
+    weight: 600,
+    color: theme.colors.charcoal,
+    style: {
+        letterSpacing: 0.5,
+    },
+})
+
+export const CategoryMore = typographyFactory({
+    size: 12,
+    weight: 400,
+    color: theme.colors.charcoal,
+    style: {
+        letterSpacing: 0.5,
+        textDecorationLine: 'underline',
+    },
+})
+
+export const CategoryItemTitle = typographyFactory({
+    size: 12,
+    weight: 500,
+    color: theme.colors.charcoal,
+    style: {
+        letterSpacing: 0.5,
+    },
+})
+
+export const CategoryItemDate = typographyFactory({
+    size: 10,
+    weight: 400,
+    color: theme.colors.charcoal,
+    style: {
+        letterSpacing: 0.5,
+        lineHeight: 24,
+        textAlign: 'right',
+    },
+})

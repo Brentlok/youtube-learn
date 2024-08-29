@@ -29,7 +29,8 @@
         "react-native-screens": "3.31.1",
         "stan-js": "1.5.0",
         "react-native-mmkv": "2.12.2",
-        "react-native-svg": "15.6.0"
+        "react-native-svg": "15.6.0",
+        "date-fns": "3.6.0"
     },
     "devDependencies": {
         "@babel/core": "7.25.2",
