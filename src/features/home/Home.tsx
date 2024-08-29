@@ -1,13 +1,13 @@
 import { StyleSheet } from 'lib/styles'
 import React from 'react'
-import { Text, View } from 'react-native'
+import { ScrollView, Text } from 'react-native'
 
 export const Home: React.FunctionComponent = () => (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
         <Text>
             Home
         </Text>
-    </View>
+    </ScrollView>
 )
 
 const styles = StyleSheet.create({

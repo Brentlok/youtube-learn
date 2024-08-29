@@ -1,13 +1,13 @@
 import { StyleSheet } from 'lib/styles'
 import React from 'react'
-import { Text, View } from 'react-native'
+import { ScrollView, Text } from 'react-native'
 
 export const Search: React.FunctionComponent = () => (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
         <Text>
             Search
         </Text>
-    </View>
+    </ScrollView>
 )
 
 const styles = StyleSheet.create({

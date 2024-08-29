@@ -11,4 +11,7 @@ export const enUs = {
         home: 'Home',
         search: 'Search',
     },
+    searchBar: {
+        placeholder: 'Search videos',
+    },
 }

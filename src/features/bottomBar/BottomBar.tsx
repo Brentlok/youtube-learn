@@ -1,5 +1,6 @@
 import { Icons } from 'assets'
 import { Redirect, Tabs } from 'expo-router'
+import { SearchBar } from 'features/searchBar'
 import { Typography } from 'lib/components'
 import { useTranslations } from 'lib/locale'
 import { useStore } from 'lib/store'
@@ -21,11 +22,11 @@ export const BottomBar: React.FunctionComponent = () => {
         <Tabs
             screenOptions={{
                 tabBarActiveTintColor: 'red',
-                headerShown: false,
+                header: ({ route }) => <SearchBar isSearch={route.name === 'search'} />,
                 tabBarStyle: {
                     backgroundColor: theme.colors.steel,
                     height: 72 + insets.bottom / 2,
-                    paddingBottom: insets.bottom / 2,
+                    paddingTop: insets.bottom / 2,
                 },
                 tabBarLabelStyle: {
                     display: 'none',
