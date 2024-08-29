@@ -26,22 +26,21 @@ const typographyFactory = ({
     color = theme.colors.black,
     weight,
     style,
-}: TypographyFactoryProps): React.FunctionComponent<React.PropsWithChildren<TypographyProps>> => {
-    return props => (
-        <Text
-            style={{
-                fontSize: size,
-                fontFamily: FONT_WEIGHT_MAP[weight],
-                color,
-                ...style,
-                ...props.style,
-            }}
-            onPress={props.link ? () => Linking.openURL(props.link ?? '') : undefined}
-        >
-            {props.children}
-        </Text>
-    )
-}
+}: TypographyFactoryProps): React.FunctionComponent<React.PropsWithChildren<TypographyProps>> =>
+props => (
+    <Text
+        style={{
+            fontSize: size,
+            fontFamily: FONT_WEIGHT_MAP[weight],
+            color,
+            ...style,
+            ...props.style,
+        }}
+        onPress={props.link ? () => Linking.openURL(props.link ?? '') : undefined}
+    >
+        {props.children}
+    </Text>
+)
 
 export const AuthHeader = typographyFactory({
     size: 22,
@@ -69,5 +68,14 @@ export const AuthTerms = typographyFactory({
     color: theme.colors.white,
     style: {
         textAlign: 'center',
+    },
+})
+
+export const BottomBarTitle = typographyFactory({
+    size: 16,
+    weight: 400,
+    color: theme.colors.white,
+    style: {
+        letterSpacing: 0.5,
     },
 })

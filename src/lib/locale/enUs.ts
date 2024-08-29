@@ -7,4 +7,8 @@ export const enUs = {
         and: ' and ',
         privacy: 'Privacy Policy',
     },
+    tabs: {
+        home: 'Home',
+        search: 'Search',
+    },
 }
