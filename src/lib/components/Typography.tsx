@@ -19,6 +19,7 @@ type TypographyFactoryProps = {
 type TypographyProps = {
     style?: TextStyle
     link?: string
+    numberOfLines?: number
 }
 
 const typographyFactory = ({
@@ -36,6 +37,7 @@ props => (
             ...style,
             ...props.style,
         }}
+        numberOfLines={props.numberOfLines}
         onPress={props.link ? () => Linking.openURL(props.link ?? '') : undefined}
     >
         {props.children}

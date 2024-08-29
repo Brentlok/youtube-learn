@@ -16,7 +16,7 @@ export const Category: React.FunctionComponent<CategoryProps> = ({
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <Typography.CategoryTitle>
+                <Typography.CategoryTitle numberOfLines={2}>
                     {title}
                 </Typography.CategoryTitle>
                 <Link href="/(tabs)/search">
@@ -30,7 +30,7 @@ export const Category: React.FunctionComponent<CategoryProps> = ({
                 contentContainerStyle={styles.list}
                 showsHorizontalScrollIndicator={false}
             >
-                {items.map(item => <CategoryItem key={item.title} {...item} />)}
+                {items.map((item, index) => <CategoryItem key={`${item.title}-${index}`} {...item} />)}
             </ScrollView>
         </View>
     )
