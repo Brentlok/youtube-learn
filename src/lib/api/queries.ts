@@ -1,5 +1,6 @@
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query'
 import { CATEGORIES } from 'features/home/consts'
+import { getSortParam, SortType } from 'features/sort/type'
 import { Category, Video } from 'lib/models'
 import { fetcher } from './fetcher'
 import { QueryKey } from './keys'
@@ -46,9 +47,9 @@ type SearchData = {
     nextPageToken: string
 }
 
-export const useSearch = (query: string) =>
+export const useSearch = (query: string, sortType: SortType) =>
     useInfiniteQuery({
-        queryKey: [QueryKey.Search, query],
+        queryKey: [QueryKey.Search, query, sortType],
         initialData: {
             pages: [] as Array<SearchData>,
             pageParams: [''],
@@ -58,7 +59,13 @@ export const useSearch = (query: string) =>
         getNextPageParam: lastPage => lastPage.nextPageToken,
         queryFn: async ({ pageParam }) => {
             return {
-                items: [],
+                items: Array.from({ length: 10 }, (_, index) => ({
+                    id: index.toString(),
+                    channelName: `test${index.toString()}`,
+                    date: new Date(),
+                    picture: 'https://unsplash.it/340/200?random',
+                    title: `test${index.toString()}`,
+                })),
                 totalResults: 100,
                 nextPageToken: Math.random().toString(),
             }
@@ -67,6 +74,7 @@ export const useSearch = (query: string) =>
                 url: '/search',
                 params: {
                     q: query,
+                    order: getSortParam(sortType),
                     pageToken: pageParam,
                     part: 'snippet',
                     maxResults: 10,

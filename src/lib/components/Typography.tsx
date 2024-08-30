@@ -24,7 +24,7 @@ type TypographyProps = {
 
 const typographyFactory = ({
     size,
-    color = theme.colors.black,
+    color = theme.colors.charcoal,
     weight,
     style,
 }: TypographyFactoryProps): React.FunctionComponent<React.PropsWithChildren<TypographyProps>> =>
@@ -85,7 +85,6 @@ export const BottomBarTitle = typographyFactory({
 export const CategoryTitle = typographyFactory({
     size: 18,
     weight: 600,
-    color: theme.colors.charcoal,
     style: {
         letterSpacing: 0.5,
     },
@@ -94,7 +93,6 @@ export const CategoryTitle = typographyFactory({
 export const CategoryMore = typographyFactory({
     size: 12,
     weight: 400,
-    color: theme.colors.charcoal,
     style: {
         letterSpacing: 0.5,
         textDecorationLine: 'underline',
@@ -104,7 +102,6 @@ export const CategoryMore = typographyFactory({
 export const CategoryItemTitle = typographyFactory({
     size: 12,
     weight: 500,
-    color: theme.colors.charcoal,
     style: {
         letterSpacing: 0.5,
     },
@@ -113,7 +110,6 @@ export const CategoryItemTitle = typographyFactory({
 export const VideoDate = typographyFactory({
     size: 10,
     weight: 400,
-    color: theme.colors.charcoal,
     style: {
         letterSpacing: 0.5,
         lineHeight: 24,
@@ -124,7 +120,6 @@ export const VideoDate = typographyFactory({
 export const SearchChannelName = typographyFactory({
     size: 12,
     weight: 700,
-    color: theme.colors.charcoal,
     style: {
         letterSpacing: 0.5,
     },
@@ -133,7 +128,6 @@ export const SearchChannelName = typographyFactory({
 export const SearchVideoTitle = typographyFactory({
     size: 15,
     weight: 400,
-    color: theme.colors.charcoal,
     style: {
         letterSpacing: 0.5,
     },
@@ -142,7 +136,33 @@ export const SearchVideoTitle = typographyFactory({
 export const SearchResults = typographyFactory({
     size: 10,
     weight: 400,
-    color: theme.colors.charcoal,
+    style: {
+        letterSpacing: 0.5,
+    },
+})
+
+export const SortTitle = typographyFactory({
+    size: 12,
+    weight: 400,
+    style: {
+        letterSpacing: 0.5,
+        textAlign: 'right',
+    },
+})
+
+export const SortModalTitle = typographyFactory({
+    size: 18,
+    weight: 600,
+    color: theme.colors.white,
+    style: {
+        letterSpacing: 0.5,
+    },
+})
+
+export const SortModalType = typographyFactory({
+    size: 14,
+    weight: 400,
+    color: theme.colors.white,
     style: {
         letterSpacing: 0.5,
     },

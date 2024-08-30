@@ -12,7 +12,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 export const BottomBar: React.FunctionComponent = () => {
     const insets = useSafeAreaInsets()
     const T = useTranslations()
-    const { isAuthenticated } = useStore()
+    const { isAuthenticated, setSearchQuery } = useStore()
 
     if (!isAuthenticated) {
         return <Redirect href="/auth" />
@@ -35,6 +35,9 @@ export const BottomBar: React.FunctionComponent = () => {
         >
             <Tabs.Screen
                 name="index"
+                listeners={{
+                    tabPress: () => setSearchQuery(''),
+                }}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <View style={styles.tab}>

@@ -1,3 +1,5 @@
+import { SortType } from 'features/sort/type'
+
 export const enUs = {
     auth: {
         title: 'Welcome to the best\nYouTube-based learning\napplication.',
@@ -18,9 +20,18 @@ export const enUs = {
         more: 'Show more',
     },
     search: {
+        emptyQuery: 'Search for something...',
         searchResults: 'results found for:',
     },
     components: {
         loader: 'Loading...',
+    },
+    sort: {
+        sortBy: 'Sort by',
+        modalTitle: 'Sort records by:',
+        confirm: 'Confirm',
+        [SortType.Popularity]: 'Most popular',
+        [SortType.Date]: 'Upload date: latest',
+        [SortType.Rating]: 'Rating: highest',
     },
 }

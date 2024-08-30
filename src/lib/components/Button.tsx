@@ -37,7 +37,7 @@ const styles = StyleSheet.create(theme => ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 12,
+        borderRadius: isBig ? 12 : 8,
     }),
     buttonText: (isBig = false) => ({
         fontSize: isBig ? 16 : 14,

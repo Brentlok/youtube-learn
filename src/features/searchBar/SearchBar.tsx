@@ -1,7 +1,8 @@
 import { Icons } from 'assets/index'
+import { router } from 'expo-router'
 import { useDebounce } from 'lib/hooks'
 import { useTranslations } from 'lib/locale'
-import { useStore, useStoreEffect } from 'lib/store'
+import { reset, useStore, useStoreEffect } from 'lib/store'
 import { StyleSheet, theme } from 'lib/styles'
 import React, { useState } from 'react'
 import { ScrollView, TextInput, TouchableOpacity, View } from 'react-native'
@@ -12,13 +13,24 @@ type SearchBarProps = {
 
 export const SearchBar: React.FunctionComponent<SearchBarProps> = ({ isSearch }) => {
     const T = useTranslations()
-    const { setSearchQuery } = useStore()
+    const { searchQuery, setSearchQuery } = useStore()
     const [search, setSearch] = useState('')
 
     useStoreEffect(({ searchQuery }) => setSearch(searchQuery))
     useDebounce({
         value: search,
-        callback: setSearchQuery,
+        callback: debounced => {
+            if (searchQuery === debounced) {
+                return
+            }
+
+            reset('sortBy')
+            setSearchQuery(debounced)
+
+            if (debounced) {
+                router.navigate('/(tabs)/search')
+            }
+        },
         delay: 300,
     })
 
