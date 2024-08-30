@@ -13,6 +13,13 @@ export const theme = {
             .filter(num => !isNaN(num))
             .reduce((acc, color) => `${acc}${color},`, 'rgba(')
             .concat(`${opacity})`),
+    circle: (size: number) => ({
+        width: size,
+        height: size,
+        borderRadius: size / 2,
+        justifyContent: 'center' as const,
+        alignItems: 'center' as const,
+    }),
 }
 
 export type Theme = typeof theme

@@ -1,4 +1,4 @@
-import { Icons } from 'assets/index'
+import { Icons } from 'assets'
 import { router } from 'expo-router'
 import { useDebounce } from 'lib/hooks'
 import { useTranslations } from 'lib/locale'

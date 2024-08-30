@@ -167,3 +167,12 @@ export const SortModalType = typographyFactory({
         letterSpacing: 0.5,
     },
 })
+
+export const VideoProgress = typographyFactory({
+    size: 10,
+    weight: 600,
+    color: theme.colors.white,
+    style: {
+        letterSpacing: 0.5,
+    },
+})

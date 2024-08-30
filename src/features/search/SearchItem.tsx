@@ -1,9 +1,10 @@
+import { router } from 'expo-router'
 import { Typography } from 'lib/components'
 import { Video } from 'lib/models'
 import { StyleSheet } from 'lib/styles'
 import { dateUtils } from 'lib/utils'
 import React from 'react'
-import { Dimensions, Image, View } from 'react-native'
+import { Dimensions, Image, TouchableOpacity } from 'react-native'
 
 export const SearchItem: React.FunctionComponent<Video> = ({
     title,
@@ -11,7 +12,7 @@ export const SearchItem: React.FunctionComponent<Video> = ({
     date,
     channelName,
 }) => (
-    <View>
+    <TouchableOpacity onPress={() => router.navigate('/details')}>
         <Image
             style={styles.image}
             source={{ uri: picture }}
@@ -25,7 +26,7 @@ export const SearchItem: React.FunctionComponent<Video> = ({
         <Typography.VideoDate>
             {dateUtils.formatDate(date)}
         </Typography.VideoDate>
-    </View>
+    </TouchableOpacity>
 )
 
 const styles = StyleSheet.create(theme => ({
