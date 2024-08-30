@@ -3,7 +3,7 @@ import { BroadChurchVideo } from 'assets'
 import { StyleSheet } from 'lib/styles'
 import React, { useRef, useState } from 'react'
 import { TouchableWithoutFeedback, View } from 'react-native'
-import { useSharedValue } from 'react-native-reanimated'
+import { Easing, useSharedValue, withTiming } from 'react-native-reanimated'
 import Video, { VideoRef } from 'react-native-video'
 import { BottomControls } from './BottomControls'
 import { PlayControls } from './PlayControls'
@@ -31,7 +31,9 @@ export const VideoPlayer: React.FunctionComponent<VideoPlayerProps> = ({
                     source={BroadChurchVideo}
                     style={styles.video(controlsVisible)}
                     onProgress={event => {
-                        currentTime.value = event.currentTime
+                        currentTime.value = withTiming(event.currentTime, {
+                            easing: Easing.linear,
+                        })
                     }}
                     onLoad={event => {
                         duration.value = event.duration
