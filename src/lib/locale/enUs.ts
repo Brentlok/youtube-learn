@@ -17,4 +17,10 @@ export const enUs = {
     home: {
         more: 'Show more',
     },
+    search: {
+        searchResults: 'results found for:',
+    },
+    components: {
+        loader: 'Loading...',
+    },
 }

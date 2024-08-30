@@ -1,5 +1,7 @@
 import { Icons } from 'assets/index'
+import { useDebounce } from 'lib/hooks'
 import { useTranslations } from 'lib/locale'
+import { useStore, useStoreEffect } from 'lib/store'
 import { StyleSheet, theme } from 'lib/styles'
 import React, { useState } from 'react'
 import { ScrollView, TextInput, TouchableOpacity, View } from 'react-native'
@@ -10,7 +12,15 @@ type SearchBarProps = {
 
 export const SearchBar: React.FunctionComponent<SearchBarProps> = ({ isSearch }) => {
     const T = useTranslations()
+    const { setSearchQuery } = useStore()
     const [search, setSearch] = useState('')
+
+    useStoreEffect(({ searchQuery }) => setSearch(searchQuery))
+    useDebounce({
+        value: search,
+        callback: setSearchQuery,
+        delay: 300,
+    })
 
     return (
         <ScrollView contentContainerStyle={styles.container} scrollEnabled={false}>

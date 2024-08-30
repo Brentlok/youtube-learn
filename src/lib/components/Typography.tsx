@@ -110,7 +110,7 @@ export const CategoryItemTitle = typographyFactory({
     },
 })
 
-export const CategoryItemDate = typographyFactory({
+export const VideoDate = typographyFactory({
     size: 10,
     weight: 400,
     color: theme.colors.charcoal,
@@ -118,5 +118,32 @@ export const CategoryItemDate = typographyFactory({
         letterSpacing: 0.5,
         lineHeight: 24,
         textAlign: 'right',
+    },
+})
+
+export const SearchChannelName = typographyFactory({
+    size: 12,
+    weight: 700,
+    color: theme.colors.charcoal,
+    style: {
+        letterSpacing: 0.5,
+    },
+})
+
+export const SearchVideoTitle = typographyFactory({
+    size: 15,
+    weight: 400,
+    color: theme.colors.charcoal,
+    style: {
+        letterSpacing: 0.5,
+    },
+})
+
+export const SearchResults = typographyFactory({
+    size: 10,
+    weight: 400,
+    color: theme.colors.charcoal,
+    style: {
+        letterSpacing: 0.5,
     },
 })

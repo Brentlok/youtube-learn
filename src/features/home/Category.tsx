@@ -2,6 +2,7 @@ import { Link } from 'expo-router'
 import { Typography } from 'lib/components'
 import { useTranslations } from 'lib/locale'
 import { Category as CategoryProps } from 'lib/models'
+import { useStore } from 'lib/store'
 import { StyleSheet } from 'lib/styles'
 import React from 'react'
 import { ScrollView, View } from 'react-native'
@@ -12,6 +13,7 @@ export const Category: React.FunctionComponent<CategoryProps> = ({
     items,
 }) => {
     const T = useTranslations()
+    const { setSearchQuery } = useStore()
 
     return (
         <View style={styles.container}>
@@ -19,7 +21,7 @@ export const Category: React.FunctionComponent<CategoryProps> = ({
                 <Typography.CategoryTitle numberOfLines={2}>
                     {title}
                 </Typography.CategoryTitle>
-                <Link href="/(tabs)/search">
+                <Link href="/(tabs)/search" onPress={() => setSearchQuery(title)}>
                     <Typography.CategoryMore>
                         {T.home.more}
                     </Typography.CategoryMore>
@@ -30,7 +32,7 @@ export const Category: React.FunctionComponent<CategoryProps> = ({
                 contentContainerStyle={styles.list}
                 showsHorizontalScrollIndicator={false}
             >
-                {items.map((item, index) => <CategoryItem key={`${item.title}-${index}`} {...item} />)}
+                {items.map((item, index) => <CategoryItem key={`${item.id}-${index}`} {...item} />)}
             </ScrollView>
         </View>
     )

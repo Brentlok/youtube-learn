@@ -20,9 +20,9 @@ export const CategoryItem: React.FunctionComponent<Video> = ({
                 {title}
             </Typography.CategoryItemTitle>
         </View>
-        <Typography.CategoryItemDate>
+        <Typography.VideoDate>
             {dateUtils.formatDate(date)}
-        </Typography.CategoryItemDate>
+        </Typography.VideoDate>
     </View>
 )
 

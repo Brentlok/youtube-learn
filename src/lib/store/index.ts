@@ -1,5 +1,6 @@
 import { createStore } from 'stan-js'
 
-export const { actions, useStore } = createStore({
+export const { useStore, useStoreEffect } = createStore({
     isAuthenticated: true,
+    searchQuery: '',
 })
