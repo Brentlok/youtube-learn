@@ -40,21 +40,19 @@ export const VideoPlayer: React.FunctionComponent<VideoPlayerProps> = ({
                     }}
                 />
             </TouchableWithoutFeedback>
-            {controlsVisible && (
-                <View style={styles.controls}>
-                    <TopControls videoRef={ref} />
-                    <PlayControls
-                        videoRef={ref}
-                        setIsPlaying={setIsPlaying}
-                        isPlaying={isPlaying}
-                    />
-                    <BottomControls
-                        duration={duration}
-                        currentTime={currentTime}
-                        videoRef={ref}
-                    />
-                </View>
-            )}
+            <View style={styles.controls(controlsVisible)}>
+                <TopControls videoRef={ref} />
+                <PlayControls
+                    videoRef={ref}
+                    setIsPlaying={setIsPlaying}
+                    isPlaying={isPlaying}
+                />
+                <BottomControls
+                    duration={duration}
+                    currentTime={currentTime}
+                    videoRef={ref}
+                />
+            </View>
         </View>
     )
 }
@@ -69,7 +67,8 @@ const styles = StyleSheet.create({
         aspectRatio: 16 / 9,
         opacity: controlsVisible ? 0.5 : 1,
     }),
-    controls: {
+    controls: (visible: boolean) => ({
+        display: visible ? 'flex' : 'none',
         width: '100%',
         height: '100%',
         position: 'absolute',
@@ -77,5 +76,5 @@ const styles = StyleSheet.create({
         left: 0,
         justifyContent: 'space-between',
         paddingTop: 18,
-    },
+    }),
 })

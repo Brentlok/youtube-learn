@@ -9,10 +9,6 @@ export const fetcher = async <T>({
     url,
     params = {},
 }: FetcherProps) => {
-    if (process.env.NODE_ENV === 'development') {
-        console.log('Fetching...', url, params)
-    }
-
     const apiURL = new URL(`${ENV.EXPO_PUBLIC_API_URL}${url}`)
 
     Object.entries(params).forEach(([key, value]) => {

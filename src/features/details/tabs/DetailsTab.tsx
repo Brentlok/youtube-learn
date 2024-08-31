@@ -5,7 +5,7 @@ import { useTranslations } from 'lib/locale'
 import { useStore } from 'lib/store'
 import { StyleSheet, theme } from 'lib/styles'
 import React from 'react'
-import { View } from 'react-native'
+import { ScrollView, TouchableOpacity, View } from 'react-native'
 
 export const DetailsTab: React.FunctionComponent = () => {
     const T = useTranslations()
@@ -13,39 +13,42 @@ export const DetailsTab: React.FunctionComponent = () => {
     const { data } = useVideoDetails(currentVideo?.id ?? '')
 
     return (
-        <View style={styles.container}>
-            <Typography.DetailsTabTitle>
-                {T.details.detailsTab.description}
-            </Typography.DetailsTabTitle>
-            <Typography.DetailsTabDescription style={styles.description}>
-                {data?.description ?? currentVideo?.description}
-            </Typography.DetailsTabDescription>
-            <Typography.DetailsTabTitle>
-                {T.details.detailsTab.statistics}
-            </Typography.DetailsTabTitle>
-            <View style={styles.statistics}>
-                <View style={styles.statisticsItem}>
-                    <Icons.Views
-                        color={theme.colors.white}
-                        size={20}
-                    />
-                    <Typography.DetailsTabStatistics>
-                        {data?.viewCount} {T.details.detailsTab.views}
-                    </Typography.DetailsTabStatistics>
-                    <View />
+        <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
+            <TouchableOpacity activeOpacity={1}>
+                <Typography.DetailsTabTitle>
+                    {T.details.detailsTab.description}
+                </Typography.DetailsTabTitle>
+                <Typography.DetailsTabDescription style={styles.description}>
+                    {data?.description ?? currentVideo?.description}
+                </Typography.DetailsTabDescription>
+                <Typography.DetailsTabTitle>
+                    {T.details.detailsTab.statistics}
+                </Typography.DetailsTabTitle>
+                <View style={styles.statistics}>
+                    <View style={styles.statisticsItem}>
+                        <Icons.Views
+                            color={theme.colors.white}
+                            size={20}
+                        />
+                        <Typography.DetailsTabStatistics>
+                            {data?.viewCount} {T.details.detailsTab.views}
+                        </Typography.DetailsTabStatistics>
+                        <View />
+                    </View>
+                    <View style={styles.statisticsItem}>
+                        <Icons.Likes
+                            color={theme.colors.white}
+                            size={20}
+                        />
+                        <Typography.DetailsTabStatistics>
+                            {data?.likeCount} {T.details.detailsTab.likes}
+                        </Typography.DetailsTabStatistics>
+                        <View />
+                    </View>
                 </View>
-                <View style={styles.statisticsItem}>
-                    <Icons.Likes
-                        color={theme.colors.white}
-                        size={20}
-                    />
-                    <Typography.DetailsTabStatistics>
-                        {data?.likeCount} {T.details.detailsTab.likes}
-                    </Typography.DetailsTabStatistics>
-                    <View />
-                </View>
-            </View>
-        </View>
+                <View style={styles.gap} />
+            </TouchableOpacity>
+        </ScrollView>
     )
 }
 
@@ -73,5 +76,8 @@ const styles = StyleSheet.create(theme => ({
         height: 32,
         flex: 1,
         paddingHorizontal: theme.gap(1),
+    },
+    gap: {
+        height: theme.gap(8),
     },
 }))

@@ -1,7 +1,8 @@
 import { Icons } from 'assets'
 import { Typography } from 'lib/components'
+import { useStore } from 'lib/store'
 import { StyleSheet, theme } from 'lib/styles'
-import React, { useState } from 'react'
+import React from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import Animated, { runOnJS, SharedValue, useAnimatedReaction, useAnimatedStyle, useDerivedValue } from 'react-native-reanimated'
 import { VideoRef } from 'react-native-video'
@@ -17,7 +18,7 @@ export const BottomControls: React.FunctionComponent<BottomControlsProps> = ({
     duration,
     videoRef,
 }) => {
-    const [displayedTime, setDisplayedTime] = useState('')
+    const { displayedTime, setDisplayedTime } = useStore()
     const progress = useDerivedValue(
         () => currentTime.value / duration.value,
         [currentTime, duration],

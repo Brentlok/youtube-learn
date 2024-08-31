@@ -174,3 +174,16 @@ export const DetailsTab = typographyFactory({
     size: 12,
     weight: 600,
 })
+
+export const Note = typographyFactory({
+    size: 12,
+    weight: 400,
+})
+
+export const NoteTimestamp = typographyFactory({
+    size: 10,
+    weight: 600,
+    style: {
+        textAlign: 'right',
+    },
+})

@@ -5,7 +5,7 @@ import { useStore } from 'lib/store'
 import { StyleSheet } from 'lib/styles'
 import React, { useState } from 'react'
 import { Image, TouchableOpacity, View } from 'react-native'
-import { DetailsTab } from './tabs'
+import { DetailsTab, NotesTab } from './tabs'
 import { VideoPlayer } from './videoPlayer'
 
 export const Details: React.FunctionComponent = () => {
@@ -56,7 +56,7 @@ export const Details: React.FunctionComponent = () => {
                         </Typography.DetailsTab>
                     </TouchableOpacity>
                 </View>
-                {isDetailsTab ? <DetailsTab /> : null}
+                {isDetailsTab ? <DetailsTab /> : <NotesTab />}
             </View>
         </TouchableOpacity>
     )
@@ -71,6 +71,7 @@ const styles = StyleSheet.create(theme => ({
     detailsContainer: {
         paddingTop: theme.gap(2.5),
         paddingHorizontal: theme.gap(2),
+        flex: 1,
     },
     channel: {
         flexDirection: 'row',

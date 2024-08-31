@@ -45,5 +45,9 @@ export const enUs = {
             views: 'views',
             likes: 'likes',
         },
+        notesTab: {
+            enter: 'Enter notes...',
+            add: 'Add note',
+        },
     },
 }
