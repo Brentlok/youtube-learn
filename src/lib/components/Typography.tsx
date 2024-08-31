@@ -187,3 +187,28 @@ export const NoteTimestamp = typographyFactory({
         textAlign: 'right',
     },
 })
+
+export const SettingsTitle = typographyFactory({
+    size: 16,
+    weight: 700,
+})
+
+export const SettingsUsername = typographyFactory({
+    size: 14,
+    weight: 700,
+})
+
+export const NotificationsTitle = typographyFactory({
+    size: 14,
+    weight: 400,
+})
+
+export const Notification = typographyFactory({
+    size: 12,
+    weight: 400,
+})
+
+export const NotificationNote = typographyFactory({
+    size: 10,
+    weight: 600,
+})

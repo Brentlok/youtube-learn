@@ -47,7 +47,7 @@ export const SearchBar: React.FunctionComponent<SearchBarProps> = ({ isSearch })
                 />
             </View>
             {!isSearch && (
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => router.navigate('/settings')}>
                     <Icons.Settings />
                 </TouchableOpacity>
             )}

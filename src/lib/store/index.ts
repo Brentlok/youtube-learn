@@ -17,6 +17,7 @@ export const { useStore, useStoreEffect, reset, actions, getState } = createStor
     },
     savedNotes: storage<SavedNoted>({}),
     displayedTime: '',
+    notificationsEnabled: storage(false),
 })
 
 export const addNote = (note: string) => {

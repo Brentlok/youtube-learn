@@ -50,4 +50,14 @@ export const enUs = {
             add: 'Add note',
         },
     },
+    settings: {
+        title: 'Settings',
+        notificationTitle: 'Learning reminders',
+        repeat: 'Repeat everyday at',
+        note: 'You will receive friendly reminder to remember to study',
+        notification: {
+            title: 'Learning reminder',
+            body: 'Stop scrolling and go study!',
+        },
+    },
 }

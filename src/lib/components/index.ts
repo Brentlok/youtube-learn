@@ -1,4 +1,5 @@
 export * from './Button'
 export * from './Check'
 export * from './Error'
+export * from './Toggle'
 export * as Typography from './Typography'

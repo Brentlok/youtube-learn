@@ -31,6 +31,7 @@ const RootLayout: React.FunctionComponent = () => {
                 <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
                 <Stack.Screen name="auth/index" options={{ headerShown: false, animation: 'none' }} />
                 <Stack.Screen name="details/index" options={{ headerShown: false }} />
+                <Stack.Screen name="settings/index" options={{ headerShown: false }} />
             </Stack>
         </QueryClientProvider>
     )
