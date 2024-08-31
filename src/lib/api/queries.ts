@@ -4,7 +4,7 @@ import { getSortParam, SortType } from 'features/sort/type'
 import { Category, Video } from 'lib/models'
 import { fetcher } from './fetcher'
 import { QueryKey } from './keys'
-import { YoutubeSearchListResponse } from './types'
+import { YoutubeSearchListResponse, YoutubeVideoStatistics } from './types'
 
 const getVideosFromResponse = (data: YoutubeSearchListResponse): Array<Video> =>
     data.items.map((item): Video => ({
@@ -13,6 +13,8 @@ const getVideosFromResponse = (data: YoutubeSearchListResponse): Array<Video> =>
         date: new Date(item.snippet.publishedAt),
         picture: item.snippet.thumbnails.medium.url,
         channelName: item.snippet.channelTitle,
+        description: item.snippet.description,
+        channelId: item.snippet.channelId,
     }))
 
 export const useCategories = () =>
@@ -63,8 +65,10 @@ export const useSearch = (query: string, sortType: SortType) =>
                     id: index.toString(),
                     channelName: `test${index.toString()}`,
                     date: new Date(),
+                    description: 'test test test',
                     picture: 'https://unsplash.it/340/200?random',
                     title: `test${index.toString()}`,
+                    channelId: '',
                 })),
                 totalResults: 100,
                 nextPageToken: Math.random().toString(),
@@ -88,3 +92,26 @@ export const useSearch = (query: string, sortType: SortType) =>
             }
         },
     })
+
+export const useVideoStatistics = (videoId: string) =>
+    useQuery({
+        queryKey: [QueryKey.VideoStatistics, videoId],
+        queryFn: async () => {
+            return {
+                viewCount: 10,
+                likeCount: 20,
+            }
+
+            const data = await fetcher<YoutubeVideoStatistics>({
+                url: '/videos',
+                params: {
+                    id: videoId,
+                    part: 'statistics',
+                },
+            })
+
+            return data.items.at(0)?.statistics
+        },
+    })
+
+export const getChannelThumbnail = (channelId: string) => `https://yt3.ggpht.com/ytc/AAUvwn${channelId}=s88`

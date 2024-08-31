@@ -1,5 +1,5 @@
 import { Logo, VideoIcon } from 'assets'
-import { useNavigation, useRouter } from 'expo-router'
+import { useRouter } from 'expo-router'
 import { Button, Typography } from 'lib/components'
 import { useTranslations } from 'lib/locale'
 import { useStore } from 'lib/store'

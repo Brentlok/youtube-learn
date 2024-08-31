@@ -34,6 +34,7 @@ props => (
             fontSize: size,
             fontFamily: FONT_WEIGHT_MAP[weight],
             color,
+            letterSpacing: 0.5,
             ...style,
             ...props.style,
         }}
@@ -50,7 +51,6 @@ export const AuthHeader = typographyFactory({
     weight: 600,
     style: {
         lineHeight: 24,
-        letterSpacing: 0.5,
         alignSelf: 'flex-start',
     },
 })
@@ -59,9 +59,6 @@ export const ButtonText = typographyFactory({
     size: 14,
     color: theme.colors.white,
     weight: 600,
-    style: {
-        letterSpacing: 0.5,
-    },
 })
 
 export const AuthTerms = typographyFactory({
@@ -77,24 +74,17 @@ export const BottomBarTitle = typographyFactory({
     size: 16,
     weight: 400,
     color: theme.colors.white,
-    style: {
-        letterSpacing: 0.5,
-    },
 })
 
 export const CategoryTitle = typographyFactory({
     size: 18,
     weight: 600,
-    style: {
-        letterSpacing: 0.5,
-    },
 })
 
 export const CategoryMore = typographyFactory({
     size: 12,
     weight: 400,
     style: {
-        letterSpacing: 0.5,
         textDecorationLine: 'underline',
     },
 })
@@ -102,16 +92,12 @@ export const CategoryMore = typographyFactory({
 export const CategoryItemTitle = typographyFactory({
     size: 12,
     weight: 500,
-    style: {
-        letterSpacing: 0.5,
-    },
 })
 
 export const VideoDate = typographyFactory({
     size: 10,
     weight: 400,
     style: {
-        letterSpacing: 0.5,
         lineHeight: 24,
         textAlign: 'right',
     },
@@ -120,32 +106,22 @@ export const VideoDate = typographyFactory({
 export const SearchChannelName = typographyFactory({
     size: 12,
     weight: 700,
-    style: {
-        letterSpacing: 0.5,
-    },
 })
 
 export const SearchVideoTitle = typographyFactory({
     size: 15,
     weight: 400,
-    style: {
-        letterSpacing: 0.5,
-    },
 })
 
 export const SearchResults = typographyFactory({
     size: 10,
     weight: 400,
-    style: {
-        letterSpacing: 0.5,
-    },
 })
 
 export const SortTitle = typographyFactory({
     size: 12,
     weight: 400,
     style: {
-        letterSpacing: 0.5,
         textAlign: 'right',
     },
 })
@@ -154,25 +130,47 @@ export const SortModalTitle = typographyFactory({
     size: 18,
     weight: 600,
     color: theme.colors.white,
-    style: {
-        letterSpacing: 0.5,
-    },
 })
 
 export const SortModalType = typographyFactory({
     size: 14,
     weight: 400,
     color: theme.colors.white,
-    style: {
-        letterSpacing: 0.5,
-    },
 })
 
 export const VideoProgress = typographyFactory({
     size: 10,
     weight: 600,
     color: theme.colors.white,
-    style: {
-        letterSpacing: 0.5,
-    },
+})
+
+export const DetailsTabTitle = typographyFactory({
+    size: 10,
+    weight: 600,
+})
+
+export const DetailsTabDescription = typographyFactory({
+    size: 12,
+    weight: 400,
+})
+
+export const DetailsTabStatistics = typographyFactory({
+    size: 10,
+    weight: 600,
+    color: theme.colors.white,
+})
+
+export const DetailsTitle = typographyFactory({
+    size: 18,
+    weight: 600,
+})
+
+export const DetailsChannelName = typographyFactory({
+    size: 14,
+    weight: 700,
+})
+
+export const DetailsTab = typographyFactory({
+    size: 12,
+    weight: 600,
 })

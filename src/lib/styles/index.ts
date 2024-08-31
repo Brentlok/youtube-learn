@@ -4,6 +4,7 @@ import { Theme, theme } from './theme'
 type CommonStyles = ViewStyle | TextStyle | ImageStyle
 
 type Config = {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     [key: string]: CommonStyles | ((...args: Array<any>) => CommonStyles)
 }
 

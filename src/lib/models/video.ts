@@ -4,4 +4,6 @@ export type Video = {
     date: Date
     picture: string
     channelName: string
+    channelId: string
+    description: string
 }

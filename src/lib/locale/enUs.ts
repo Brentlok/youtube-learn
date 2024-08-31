@@ -34,4 +34,16 @@ export const enUs = {
         [SortType.Date]: 'Upload date: latest',
         [SortType.Rating]: 'Rating: highest',
     },
+    details: {
+        tabs: {
+            details: 'Details',
+            notes: 'Notes',
+        },
+        detailsTab: {
+            description: 'Description',
+            statistics: 'Statistics',
+            views: 'views',
+            likes: 'likes',
+        },
+    },
 }

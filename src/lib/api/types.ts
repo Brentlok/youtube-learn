@@ -44,3 +44,14 @@ type YoutubeSearchListItem = {
         publishTime: string
     }
 }
+
+export type YoutubeVideoStatistics = {
+    items: Array<YoutubeVideoStatisticsItem>
+}
+
+type YoutubeVideoStatisticsItem = {
+    statistics: {
+        viewCount: string
+        likeCount: string
+    }
+}
