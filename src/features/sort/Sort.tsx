@@ -78,7 +78,7 @@ const styles = StyleSheet.create(theme => ({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: theme.hexToRgba(theme.colors.black, 0.8),
-        maxHeight: Dimensions.get('screen').height - (72 + inset / 2),
+        maxHeight: Dimensions.get('window').height - (72 + inset / 2),
         paddingHorizontal: 36,
     }),
     modal: {

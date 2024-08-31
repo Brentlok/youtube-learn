@@ -2,7 +2,7 @@
 import { BroadChurchVideo } from 'assets'
 import { StyleSheet } from 'lib/styles'
 import React, { useRef, useState } from 'react'
-import { TouchableWithoutFeedback, View } from 'react-native'
+import { ScrollView, TouchableWithoutFeedback, View } from 'react-native'
 import { Easing, useSharedValue, withTiming } from 'react-native-reanimated'
 import Video, { VideoRef } from 'react-native-video'
 import { BottomControls } from './BottomControls'
@@ -25,21 +25,24 @@ export const VideoPlayer: React.FunctionComponent<VideoPlayerProps> = ({
 
     return (
         <View style={styles.container}>
-            <TouchableWithoutFeedback onPress={openControls}>
-                <Video
-                    ref={ref}
-                    source={BroadChurchVideo}
-                    style={styles.video(controlsVisible)}
-                    onProgress={event => {
-                        currentTime.value = withTiming(event.currentTime, {
-                            easing: Easing.linear,
-                        })
-                    }}
-                    onLoad={event => {
-                        duration.value = event.duration
-                    }}
-                />
-            </TouchableWithoutFeedback>
+            <ScrollView>
+                <TouchableWithoutFeedback onPress={openControls}>
+                    <Video
+                        playInBackground={false}
+                        ref={ref}
+                        source={BroadChurchVideo}
+                        style={styles.video(controlsVisible)}
+                        onProgress={event => {
+                            currentTime.value = withTiming(event.currentTime, {
+                                easing: Easing.linear,
+                            })
+                        }}
+                        onLoad={event => {
+                            duration.value = event.duration
+                        }}
+                    />
+                </TouchableWithoutFeedback>
+            </ScrollView>
             <View style={styles.controls(controlsVisible)}>
                 <TopControls videoRef={ref} />
                 <PlayControls
@@ -61,6 +64,7 @@ const styles = StyleSheet.create({
     container: {
         position: 'relative',
         width: '100%',
+        zIndex: 10,
     },
     video: (controlsVisible: boolean) => ({
         width: '100%',
@@ -70,10 +74,11 @@ const styles = StyleSheet.create({
     controls: (visible: boolean) => ({
         display: visible ? 'flex' : 'none',
         width: '100%',
-        height: '100%',
+        height: 200,
         position: 'absolute',
         top: 0,
         left: 0,
+        zIndex: 999,
         justifyContent: 'space-between',
         paddingTop: 18,
     }),

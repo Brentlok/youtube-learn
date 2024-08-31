@@ -4,6 +4,7 @@ import { Toggle, Typography } from 'lib/components'
 import { useTranslations } from 'lib/locale'
 import { useStore } from 'lib/store'
 import { StyleSheet } from 'lib/styles'
+import { R } from 'lib/utils'
 import React, { useEffect, useRef } from 'react'
 import { Alert, View } from 'react-native'
 
@@ -29,7 +30,7 @@ export const NotificationsSettings: React.FunctionComponent = () => {
         }
 
         if (!notificationsEnabled) {
-            Notifications.cancelAllScheduledNotificationsAsync()
+            Notifications.cancelAllScheduledNotificationsAsync().catch(R.T)
 
             return
         }

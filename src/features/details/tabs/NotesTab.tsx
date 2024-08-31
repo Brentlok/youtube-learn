@@ -11,6 +11,10 @@ export const NotesTab: React.FunctionComponent = () => {
     const { currentNotes } = useStore()
 
     const handleAddNote = () => {
+        if (!note) {
+            return
+        }
+
         addNote(note)
         setNote('')
     }
