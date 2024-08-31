@@ -4,7 +4,7 @@ import { useTranslations } from 'lib/locale'
 import { useStore } from 'lib/store'
 import { StyleSheet } from 'lib/styles'
 import React, { useState } from 'react'
-import { Image, TouchableOpacity, View } from 'react-native'
+import { Image, Platform, StatusBar, TouchableOpacity, View } from 'react-native'
 import { DetailsTab, NotesTab } from './tabs'
 import { VideoPlayer } from './videoPlayer'
 
@@ -30,10 +30,12 @@ export const Details: React.FunctionComponent = () => {
                     {currentVideo?.title}
                 </Typography.DetailsTitle>
                 <View style={styles.channel}>
-                    <Image
-                        style={styles.channelThumbnail}
-                        source={{ uri: data }}
-                    />
+                    {data && (
+                        <Image
+                            style={styles.channelThumbnail}
+                            source={{ uri: data }}
+                        />
+                    )}
                     <Typography.DetailsChannelName>
                         {currentVideo?.channelName}
                     </Typography.DetailsChannelName>
@@ -65,7 +67,10 @@ export const Details: React.FunctionComponent = () => {
 const styles = StyleSheet.create(theme => ({
     container: {
         flex: 1,
-        paddingTop: theme.gap(8),
+        paddingTop: Platform.select({
+            ios: theme.gap(8),
+            android: StatusBar.currentHeight,
+        }),
         height: '100%',
     },
     detailsContainer: {

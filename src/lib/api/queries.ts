@@ -22,11 +22,6 @@ export const useCategories = () =>
         queryKey: [QueryKey.Categories],
         queryFn: () =>
             Promise.all(CATEGORIES.map(async (category): Promise<Category> => {
-                return {
-                    title: category,
-                    items: [],
-                }
-
                 const data = await fetcher<YoutubeSearchListResponse>({
                     url: '/search',
                     params: {

@@ -6,7 +6,7 @@ import { storage } from 'stan-js/storage'
 type SavedNoted = Partial<Record<string, Array<Note>>>
 
 export const { useStore, useStoreEffect, reset, actions, getState } = createStore({
-    isAuthenticated: true,
+    isAuthenticated: false,
     searchQuery: '',
     sortBy: SortType.Popularity,
     currentVideo: null as Video | null,

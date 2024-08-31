@@ -62,7 +62,8 @@ const styles = StyleSheet.create(theme => ({
         alignItems: 'center',
     },
     videoIconBox: {
-        paddingVertical: 132,
+        flex: 1,
+        justifyContent: 'center',
     },
     loginButton: {
         marginTop: theme.gap(4),
