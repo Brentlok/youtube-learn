@@ -1,5 +1,5 @@
 import { Icons } from 'assets'
-import { useVideoStatistics } from 'lib/api'
+import { useVideoDetails } from 'lib/api'
 import { Typography } from 'lib/components'
 import { useTranslations } from 'lib/locale'
 import { useStore } from 'lib/store'
@@ -10,7 +10,7 @@ import { View } from 'react-native'
 export const DetailsTab: React.FunctionComponent = () => {
     const T = useTranslations()
     const { currentVideo } = useStore()
-    const { data } = useVideoStatistics(currentVideo?.id ?? '')
+    const { data } = useVideoDetails(currentVideo?.id ?? '')
 
     return (
         <View style={styles.container}>
@@ -18,7 +18,7 @@ export const DetailsTab: React.FunctionComponent = () => {
                 {T.details.detailsTab.description}
             </Typography.DetailsTabTitle>
             <Typography.DetailsTabDescription style={styles.description}>
-                {currentVideo?.description}
+                {data?.description ?? currentVideo?.description}
             </Typography.DetailsTabDescription>
             <Typography.DetailsTabTitle>
                 {T.details.detailsTab.statistics}

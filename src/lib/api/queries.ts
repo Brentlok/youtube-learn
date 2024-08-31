@@ -4,7 +4,7 @@ import { getSortParam, SortType } from 'features/sort/type'
 import { Category, Video } from 'lib/models'
 import { fetcher } from './fetcher'
 import { QueryKey } from './keys'
-import { YoutubeSearchListResponse, YoutubeVideoStatistics } from './types'
+import { YoutubeSearchListResponse, YoutubeVideoChannel, YoutubeVideoDetails } from './types'
 
 const getVideosFromResponse = (data: YoutubeSearchListResponse): Array<Video> =>
     data.items.map((item): Video => ({
@@ -60,20 +60,6 @@ export const useSearch = (query: string, sortType: SortType) =>
         enabled: Boolean(query),
         getNextPageParam: lastPage => lastPage.nextPageToken,
         queryFn: async ({ pageParam }) => {
-            return {
-                items: Array.from({ length: 10 }, (_, index) => ({
-                    id: index.toString(),
-                    channelName: `test${index.toString()}`,
-                    date: new Date(),
-                    description: 'test test test',
-                    picture: 'https://unsplash.it/340/200?random',
-                    title: `test${index.toString()}`,
-                    channelId: '',
-                })),
-                totalResults: 100,
-                nextPageToken: Math.random().toString(),
-            }
-
             const data = await fetcher<YoutubeSearchListResponse>({
                 url: '/search',
                 params: {
@@ -93,25 +79,37 @@ export const useSearch = (query: string, sortType: SortType) =>
         },
     })
 
-export const useVideoStatistics = (videoId: string) =>
+export const useVideoDetails = (videoId: string) =>
     useQuery({
         queryKey: [QueryKey.VideoStatistics, videoId],
         queryFn: async () => {
-            return {
-                viewCount: 10,
-                likeCount: 20,
-            }
-
-            const data = await fetcher<YoutubeVideoStatistics>({
+            const data = await fetcher<YoutubeVideoDetails>({
                 url: '/videos',
                 params: {
                     id: videoId,
-                    part: 'statistics',
+                    part: 'statistics,snippet',
                 },
             })
 
-            return data.items.at(0)?.statistics
+            return {
+                ...data.items.at(0)?.statistics,
+                description: data.items.at(0)?.snippet.description,
+            }
         },
     })
 
-export const getChannelThumbnail = (channelId: string) => `https://yt3.ggpht.com/ytc/AAUvwn${channelId}=s88`
+export const useChannelThumbnail = (channelId: string) =>
+    useQuery({
+        queryKey: [QueryKey.ChannelThumbnail, channelId],
+        queryFn: async () => {
+            const data = await fetcher<YoutubeVideoChannel>({
+                url: '/channels',
+                params: {
+                    id: channelId,
+                    part: 'snippet',
+                },
+            })
+
+            return data.items.at(0)?.snippet.thumbnails.default.url
+        },
+    })

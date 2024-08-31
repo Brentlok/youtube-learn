@@ -45,13 +45,30 @@ type YoutubeSearchListItem = {
     }
 }
 
-export type YoutubeVideoStatistics = {
-    items: Array<YoutubeVideoStatisticsItem>
+export type YoutubeVideoDetails = {
+    items: Array<YoutubeVideoDetailsItem>
 }
 
-type YoutubeVideoStatisticsItem = {
+type YoutubeVideoDetailsItem = {
     statistics: {
         viewCount: string
         likeCount: string
+    }
+    snippet: {
+        description: string
+    }
+}
+
+export type YoutubeVideoChannel = {
+    items: Array<YoutubeVideoChannelItem>
+}
+
+type YoutubeVideoChannelItem = {
+    snippet: {
+        thumbnails: {
+            [key: string]: {
+                url: string
+            }
+        }
     }
 }

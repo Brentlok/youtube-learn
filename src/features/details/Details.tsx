@@ -1,4 +1,4 @@
-import { getChannelThumbnail } from 'lib/api'
+import { useChannelThumbnail } from 'lib/api'
 import { Typography } from 'lib/components'
 import { useTranslations } from 'lib/locale'
 import { useStore } from 'lib/store'
@@ -13,6 +13,7 @@ export const Details: React.FunctionComponent = () => {
     const { currentVideo } = useStore()
     const [isDetailsTab, setIsDetailsTab] = useState(true)
     const [controlsVisible, setControlsVisible] = useState(false)
+    const { data } = useChannelThumbnail(currentVideo?.channelId ?? '')
 
     return (
         <TouchableOpacity
@@ -31,7 +32,7 @@ export const Details: React.FunctionComponent = () => {
                 <View style={styles.channel}>
                     <Image
                         style={styles.channelThumbnail}
-                        source={{ uri: getChannelThumbnail(currentVideo?.channelId ?? '') }}
+                        source={{ uri: data }}
                     />
                     <Typography.DetailsChannelName>
                         {currentVideo?.channelName}
